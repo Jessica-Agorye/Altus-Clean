@@ -13,7 +13,7 @@ const Gallery = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <img
-            src={images.img1}
+            src={images.img6}
             alt=""
             className="rounded-xl h-72 w-full object-cover"
           />
@@ -31,7 +31,7 @@ const Gallery = () => {
           />
 
           <img
-            src={images.img1}
+            src={images.img7}
             alt=""
             className="rounded-xl h-72 w-full object-cover"
           />
