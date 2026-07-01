@@ -11,9 +11,9 @@ const Contact = () => {
           <div>
             <h3 className="font-semibold text-xl mb-4">Contact Information</h3>
 
-            <p>Email: info@cleanco.com</p>
+            <p>Email: altuscleaningservices@gmail.com</p>
 
-            <p className="mt-3">Phone: +234 XXX XXX XXXX</p>
+            <p className="mt-3">Phone: +234 802 261 7982</p>
 
             <p className="mt-3">Monday - Saturday</p>
           </div>
