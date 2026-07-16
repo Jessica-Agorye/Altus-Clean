@@ -45,17 +45,31 @@ const BookingForm = () => {
     setError("");
 
     try {
-      // Replace this with your Google Apps Script fetch
-      console.log(formData);
+      const body = new URLSearchParams();
 
-      // Simulate an API request
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      body.append("name", formData.name);
+      body.append("email", formData.email);
+      body.append("phone", formData.phone);
+      body.append("service", formData.service);
+      body.append("message", formData.message);
 
-      setSuccess(
-        "Your booking request has been submitted successfully. We'll contact you shortly.",
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbwAMgyyhUPdcS_3LO54Nx5wCSg-9eQxfnvHp380B6nnEA83ByRFPVAt6hOpnFojJDQHIw/exec",
+        {
+          method: "POST",
+          body,
+        },
       );
 
-      // Reset the form
+      const result = await response.text();
+      const data = JSON.parse(result);
+
+      if (!data.success) {
+        throw new Error(data.message);
+      }
+
+      setSuccess(data.message);
+
       setFormData({
         name: "",
         email: "",
@@ -67,7 +81,7 @@ const BookingForm = () => {
       console.error(err);
 
       setError(
-        "We couldn't submit your booking. Please try again in a few minutes.",
+        err.message || "We couldn't submit your booking. Please try again.",
       );
     } finally {
       setLoading(false);
